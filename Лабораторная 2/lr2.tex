@@ -1,0 +1,551 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage[top=2cm, bottom=1.5cm, left=2cm, right=1.5cm]{geometry}
+\usepackage{mathtools}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{filecontents}
+\usepackage[T1]{fontenc}
+\usepackage{listings,chngcntr}
+
+\begin{document}
+%\counterwithin{lstlisting}{}
+\thispagestyle{empty} %чтобы не было номера на первой странице
+
+\begin{centering}
+	\textbf{
+{\large МИНОБРНАУКИ РОССИИ\\
+САНКТ-ПЕТЕРБУРГСКИЙ ГОСУДАРСТВЕННЫЙ\\
+ЭЛЕКТРОТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ\\
+«ЛЭТИ» ИМ. В.И. УЛЬЯНОВА (ЛЕНИНА)\\
+Кафедра САПР}\\
+}
+\end{centering}
+
+
+\vspace{7cm}
+
+\begin{centering}
+\textbf{ {\large 
+ЗАДАНИЕ\\
+по лабораторной работе №2\\
+по дисциплине «Методы оптимизации»\\
+Тема: \guillemotleftМетоды одномерной оптимизации на основе поиска
+стационарной точки\guillemotright\\
+}}
+\end{centering}
+
+\vspace{4cm}
+
+\begin{tabular}{l r}
+\textbf{ {\large Преподаватель:}}&\hspace{6cm} \textbf{ {\large Каримов А.И.}}\\
+\end{tabular}
+
+\vspace{7cm}
+
+
+\begin{centering}
+	{\large
+Санкт-Петербург \\
+2019 \\
+}
+\end{centering}
+
+\newpage
+ 
+\subsection*{Цель работы}
+
+Изучение среды MATLAB, создание программы для реализации одного из методов одномерного поиска на основе поиска стационарной точки: 
+
+\begin{itemize}
+	\item Метод Ньютона;
+	\item Метод секущих;
+	\item Метод Мюллера;
+	\item Обратная параболическая интерполяция;
+	\item Метод Брента-Деккера.
+\end{itemize}
+
+
+\subsection*{Основные теоретические положения}
+
+Критические и стационарные точки функции определяются следующим образом.
+
+\textbf{Критические точки} функции $f(x)$ -- точки, в которых производная $f'(x)$ не существует или обращается в нуль.
+
+\textbf{Стационарные точки} функции $f(x)$ -- точки, в которых производная $f'(x)$ обращается в нуль.
+
+При этом стационарные точки подрязделяются на:
+
+\begin{itemize}
+	\item экстремумы -- точки минимума или максимума;
+	\item седловые точки -- точки, в которых производная нулевая, но минимум или максимум не достигается.
+\end{itemize}
+
+
+\textbf{Лемма Ферма} утверждает: производная $f'(x)$ дифференцируемой функции в точке экстремума равна нулю.
+В соответствии с этой леммой, возможно использования метода нахождения нуля производной в качестве метода оптимизации. Для этого осуществляются следующие шаги:
+
+1) Поиск ${x_i^*}: f''(x^*) = 0$
+
+2) Осуществляется проверка: $x_i^*$ -- экстремум, если  
+
+\begin{equation}
+f'''(x^*) \neq 0
+\label{lf1}
+\end{equation}
+
+ или 
+ 
+ \begin{equation}
+  f''(x^* - \epsilon)f''(x^* + \epsilon) < 0, 
+  \label{lf2}
+ \end{equation}
+где $\epsilon > 0$ -- малое число (взаимозаменяемые условия).
+
+\subsubsection*{Метод Ньютона}
+Метод Ньютона минимизации функции является обобщением известного метода Ньютона отыскания корня уравнения 
+
+\begin{equation*}
+f'(x^*) = 0.
+\end{equation*}
+
+
+В качестве приближения $x_{k + 1}$ к минимуму $x^*$ берется точка, в которой производная 
+$f'(x) = 0$, т. е. 
+$f'(x_k) + \frac{f''(x_k)}{\Delta x_k} = 0$.
+Таким образом, 
+
+\begin{equation}
+x_{k + 1} = x_k-\frac{f'(x_k)}{f ''(x_k)}.
+\label{eq0}
+\end{equation}
+
+Метод Ньютона формулируется следующим образом.
+
+\textbf{Подготовительный этап}. Берется начальная точка $x_1$, устанавливается счетчик итераций $k=1$.
+
+\textbf{Основной этап}
+
+1) Находится следующее значение $x_{k+1}$ по формуле \eqref{eq0}, проверяется критерий окончания поиска
+В качестве критерия окончания поиска используются следующие сотношения:
+\begin{align*}
+|x_{k + 1}-x_k| &< \epsilon
+\\
+|f'(x_{k + 1})-f'(x_k)| &< \delta
+\end{align*}
+
+2) Если поиск не окончен, устанавливается новое значение счетчика $k := k + 1$, иначе -- проверяются критерии \eqref{lf1} или \eqref{lf2}, и если они удовлетвореня, найденное значение $x_{k+1}$ является искомым экстремумом.
+
+\subsubsection*{Метод секущих}
+
+Метод секущих предлагает заменить вторую производную 
+$f''(x_k)$ в ньютоновской формуле её линейной аппроксимацией $(f'(x_k) - f'(x_{k - 1}))/(x_{k} - x_{k - 1})$. Тем самым,
+
+\begin{equation*}
+x_{k + 1} = x_k - \frac{f'(x_k)(x_k - x_{k - 1})}{f'(x_k) - f '(x_{k – 1})}.
+\end{equation*}
+
+Легко видеть, что $x_{k + 1}$ -- точка пересечения с осью абсцисс секущей прямой, проходящей через точки $x_{k}$ и $x_{k - 1}$.
+
+\textbf{Псевдокод}
+
+\textbf{Цикл} 
+
+$x_{k + 1} = b_{k} - f'(b_k)(b_k - a_k)/(f'(b_k) - f'(a_k))$; 
+
+\textbf{Если}
+
+\quad $|f'(x_{k + 1})| \leq \epsilon$, \textcolor{gray}{//КОП}
+
+\textbf{то}
+
+\quad остановиться
+
+\textbf{иначе} \textcolor{gray}{// Уменьшить интервал поиска минимума}
+
+
+\quad \textbf{Если}
+
+\quad\quad $ f'(x_{k + 1}) > 0$, 
+
+\quad \textbf{то}
+
+\quad\quad$a_{k + 1} = a_k$, $b_{k + 1} = x_{k + 1},$ 
+
+\quad\textbf{иначе}
+
+
+\quad\quad$a_{k + 1} = x_{k + 1}$, $b_{k + 1} = b_k$;
+
+
+$k = k + 1$;
+
+
+\textbf{Пока не выполнен КОП}
+
+
+\subsubsection*{Метод Мюллера}
+
+
+Метод Мюллера основан на методе секущих. Основная идея состоит в том, чтобы использовать не две, а три опорные точки, и строить секущие параболы, а не прямые. В качестве следующего приближения берется точка пересечения параболы и оси $x$.
+
+Найдем параболу через три точки:
+
+\begin{equation}
+y = f(x_k) + w(x - x_k)+f[x_k,x_{k-1},x_{k-2}](x - x_k)^2,
+\label{eq1}
+\end{equation}
+где
+
+\begin{equation}
+w = f[x_k,x_{k-1}] + f[x_k,x_{k-2}] - f[x_{k-1},x_{k-2}].
+\label{eq2}
+\end{equation}
+
+Тогда очередная точка ищется по формуле
+
+\begin{equation}
+x_{k+1} = x_{k} - \frac{2f(x_k)}{w \pm \sqrt{w^2 - 4f(x_k)f[x_k,x_{k-1},x_{k-2}]}}.
+\label{eq3}
+\end{equation}
+
+Все остальное в методе Мюллера аналогично методу секущих. \textbf{Разделенные разности} первого и второго порядка в уравнениях \eqref{eq1}--\eqref{eq3} находятся по следующим формулам. Разделенная разность первого порядка:
+
+\begin{equation*}
+f[x_0,x_1] = \frac{f(x_1) - f(x_0)}{x_1 - x_0}
+\end{equation*}
+
+Разделенная разность второго порядка:
+
+\begin{equation*}
+f[x_0,x_1,x_2] = \frac{f[x_1,x_2] - f[x_0,x_1]}{x_2 - x_0}
+\end{equation*}
+
+\subsubsection*{Метод обратной параболической интерполяции}
+
+Ищет стационарную точку по формуле
+
+\begin{multline*}
+x_{n+1} = \frac{f'_{n-1}f'_{n}}{(f'_{n_2} - f'_{n - 1})(f'_{n - 2} - f'_{n})}x_{n-2} \; + \\ + \; \frac{f'_{n-2}f'_{n}}{(f'_{n-1} - f'_{n - 2})(f'_{n-1} - f'{n})}x_{n-1} \;+\; \frac{f'_{n-2}f'_{n-1}}{(f'_{n} - f'{n-2})(f'_n - f'_{n-1})}x_n
+\end{multline*}
+
+В остальном -- метод аналогичен методу Ньютона
+
+\subsubsection*{Метод Брента-Деккера}
+
+Метод Брента-Деккера объединяет метод средней точки, секущих и обратной квадратичной интерполяции для поиска нуля функции. Его реализация на псевдокоде представлена ниже.
+
+
+\noindent 
+\subsubsection*{Псевдокод}
+
+
+\textbf{input} $a, b$, and (a pointer to) a function for $f$
+
+calculate $f(a)$
+
+calculate $f(b)$
+
+
+\textbf{if} $f(a)f(b) \geq 0$ 
+\textbf{then}
+
+\quad exit function because the root is not bracketed.
+
+
+\textbf{end if}
+
+
+\textbf{if} $|f(a)| < |f(b)|$ 
+
+\textbf{then}
+
+\quad swap $(a,b)$
+
+\textbf{end if}
+
+$c := a$
+
+set mflag
+
+\textbf{repeat until} $f(b or s) = 0$ or $|b - a| < \epsilon$
+
+\quad 
+\textbf{if} $f(a) \neq f(c)$ and $f(b) \neq f(c)$ 
+\textbf{then}
+
+\quad \quad(inverse quadratic interpolation)
+
+\quad\quad$ s:={\frac {af(b)f(c)}{(f(a)-f(b))(f(a)-f(c))}}+{\frac {bf(a)f(c)}{(f(b)-f(a))(f(b)-f(c))}}+{\frac {cf(a)f(b)}{(f(c)-f(a))(f(c)-f(b))}}$ 
+
+\quad 
+\textbf{else}
+
+\quad \quad(secant method)
+
+\quad \quad$s:=b-f(b){\frac {b-a}{f(b)-f(a)}}$ 
+
+
+\quad 
+\textbf{end if}
+
+\quad 
+\textbf{if} (condition 1) s is not between $ (3a+b)/4$ and $b$ or
+
+\quad(condition 2) (mflag is set and $|s-b| \geq |b-c|/2$) or
+
+\quad(condition 3) (mflag is cleared and  $|s-b| \geq |c-d|/2$) or
+
+\quad(condition 4) (mflag is set and  $|b-c| < \delta$) or
+
+\quad(condition 5) (mflag is cleared and  $|c-d| < \delta$) 
+\textbf{then}
+
+\quad \quad (bisection method)
+
+\quad\quad$s:=\frac {a+b}{2}$
+
+\quad\quad set mflag
+
+\quad 
+\textbf{else}
+
+\quad\quad clear mflag
+
+\quad 
+\textbf{end if}
+
+\quad calculate $f(s)$
+
+\quad$d := c$ 
+
+\quad$c := b$
+
+\quad 
+\textbf{if} $f(a)f(s) < 0$ 
+\textbf{then}
+
+\quad\quad $b := s $
+
+\quad 
+\textbf{else}
+
+\quad\quad $a := s $
+
+\quad 
+\textbf{end if}
+
+\quad 
+\textbf{if} $|f(a)| < |f(b)|$ 
+\textbf{then}
+
+\quad\quad swap $(a,b) $
+
+\quad end if
+
+end repeat
+
+output $b$ or $s$ (return the root)
+
+\subsection*{Реализация в MATLAB}
+
+При реализации методов следует придерживаться принципа: один метод, одна функция -- один \lstinline[style=Matlab-editor]{*.m}-файл.
+Следует тщательно комментировать код и писать раздел описания файла в начале, чтобы можно было воспользоваться командой \lstinline[style=Matlab-editor]{help}. Для реализации методов понадобятся функции среды, аналогичные функциям, применяемым в лабораторной работе 1. Также потребуется функция экспорта растрового изображения
+\lstinline[style=Matlab-editor]{export_fig}, которая устанавливается одноименным add-on'ом в соответствующей вкладке среды (для этого необходимо войти в аккаунт на официальном сайте Mathworks).
+
+Пример правильного вызова команды \lstinline[style=Matlab-editor]{export_fig} следующий:
+
+ \lstinline[style=Matlab-editor]{export_fig(gcf,'1.jpg','-transparent','-r300')}
+ 
+ Здесь \lstinline[style=Matlab-editor]{gcf} отвечает за выбор текущего окна графика, \lstinline[style=Matlab-editor]{'1.jpg'} -- название файла, \lstinline[style=Matlab-editor]{'-transparent'} -- выбор прозрачного фона (белого для форматов типа *.jpg, не поддерживающих прозрачных цветов), \lstinline[style=Matlab-editor]{'-r300'} -- разрешение в 300 dpi, соответствующее заданному качеству печати.
+ 
+ Также понадобится команда 
+ 
+  \lstinline[style=Matlab-editor]{num2str(x)}
+  
+  Эта команда преобразует переменную  \lstinline[style=Matlab-editor]{x} в текст -- массив символов типа \lstinline[style=Matlab-editor]{char}.
+
+Помимо реализации самих методов, в данной работе потребуется реализовать также и визуализацию процесса работы оптимизации. Пример соответствующего когда показан в листинге 1.
+
+\newpage
+\begin{lstlisting}[style=Matlab-editor, caption=Метод золотого сечения с визуализацией] 
+function [xmin, fmin, neval] = goldensectionsearch2slides(f,interval,tol)
+% goldensectionsearchvisual searches minimum using golden section
+% [xmin, fmin, neval] = goldensectionsearch(f,interval,tol)
+% f - an objective function handle
+% interval = [a, b] - search interval
+% tol - set for bot range and function value
+    a = interval(1);
+    b = interval(2);
+    deltainterval = realmax; %value greater then tol
+    L = b - a;
+    neval = 0;
+    Fi = (1 + sqrt(5))/2;
+ 
+    % VISUALIZATION
+    ctr = 1;
+    deltaX = (b-a)/100;
+    figure(3); hold on
+    [miny, maxy] = drawplot(f,a,b,a,b);
+    deltaY = abs(maxy - miny)/100;
+    placelabel(a,0,deltaX,deltaY,ctr);
+    placelabel(b,0,deltaX,deltaY,ctr);
+    export_fig(gcf,'1.jpg','-transparent','-r300');
+    
+    % MAIN LOOP
+    while L > tol
+        L = b - a;
+        
+        x1 = b - L/Fi; 
+        x2 = a + L/Fi;
+        
+        y1 = feval(f,x1);
+        y2 = feval(f,x2);
+        ctr = ctr + 1;
+        
+        if ctr < 10
+            drawplot(f,a,b,x1,x2);
+        end
+        
+        if y1 > y2
+            a = x1;
+            placelabel(x1,0,deltaX,deltaY,ctr);
+            xmin = x2;
+            fmin = y2;
+        else
+            b = x2;
+            placelabel(x2,0,deltaX,deltaY,ctr);
+            xmin = x1;
+            fmin = y1;
+        end
+        
+        neval = neval + 2;
+        
+        if ctr <= 10
+           export_fig(gcf,[num2str(ctr),'.jpg'],'-transparent','-r300');
+        end
+    end
+end
+\end{lstlisting}
+
+В Листинге 2 показана реализация используемой в коде функции \lstinline[style=Matlab-editor]{drawplot}.
+
+\begin{lstlisting}[style=Matlab-editor, caption=Функция рисования графика] 
+function [miny maxy] = drawplot(f,a,b,x1,x2)
+    figure(3); 
+    h = (b-a)/100;
+    x = a:h:b;
+    y = feval(f,x);
+    
+    miny = min(y);
+    maxy = max(y);
+    
+    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    plot(x,y,'LineWidth',1,'Color',colp);
+    scatter([a b],[feval(f,a), feval(f,b)],'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
+    xlabel('\itx');
+    ylabel('\ity');
+    line([a b],[0 0],'Color','k','LineWidth',1); %axis x
+    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    y1 = feval(f,x1);
+    line([x1 x1],[0 y1],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
+    y2 = feval(f,x2);
+    line([x2 x2],[0 y2],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
+end
+\end{lstlisting}
+
+В Листинге 3 показана реализация дополнительной функции \lstinline[style=Matlab-editor]{placelabel}.
+
+\begin{lstlisting}[style=Matlab-editor, caption=Функция установки меток с нумерацией итераций] 
+function placelabel(x,y,deltaX,deltaY,iternumber)
+if iternumber <=10
+    text(x - deltaX/2,y + 4*deltaY,num2str(iternumber));
+end
+end
+\end{lstlisting}
+
+Проверьте, как работает команда \lstinline[style=Matlab-editor]{help}, введя в командную строку
+
+\lstinline[style=Matlab-editor]{>>help goldensectionsearch2slides}
+
+Программа нарисует серию из 10 кадров, озаглавленных от ``1.jpg'' до ``10.jpg''. Пример кадра приведен на рисунке \ref{fig1}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=12.3cm]{8.jpg}
+	\caption{Кадр номер 8, полученный кодом \texttt{goldensectionsearch2slides}}
+	\label{fig1}
+\end{figure}
+
+\subsection*{Содержание работы и отчета}
+
+Лабораторная работа должна включать в себя *.m-файлы кодов на MATLAB для решения задачи и от 5 до 10 файлов изображений со стадиями выполнения каждого из заданных в варианте методов в формате *.jpg (количество файлов зависит от того, насколько читаемым является последнее изображение). Тип и формат визуализации может выбираться по усмотрению студента в зависимости от метода оптимизации. 
+
+Отчет должен содержать титульный лист и разделы:
+
+\begin{itemize}
+\item Цель работы
+
+\item Основные теоретические положения. 
+
+\item Коды для решения задачи оптимизации.
+
+\item Реализация отрисовки изображений для двух заданных методов и заданной целевой функции (в тексте приводится к качестве примера по одному изображению для каждого метода).
+
+\item Выводы.
+\end{itemize}
+
+В приложении к данному документу находятся *.m-файлы, реализующие функции:
+\begin{lstlisting}[style=Matlab-editor] 
+f %objective function (2)
+goldensectionsearch2slides %golden section search with visualization implementation
+test_goldensectionsearch2slides %test file for goldensectionsearch2slides
+\end{lstlisting}
+
+
+В Таблице \ref{tab:1} приведены тестовые функции. Обратите внимание, что функция 1 неунимодальна!
+\begin{table}
+  \centering
+    \begin{tabular}{| l | l | l |}
+    \hline
+     Номер & Функция & Точка $x^*$ \\ \hline
+     1 & $y = x^2  -  10 \cos(0.5 \pi x) - 110$ & 0\\ \hline
+     2 & $y = (x - 3)^2 - 50$  & 3 \\ \hline
+     \end{tabular}
+    \caption{Тестовые функции}
+    \label{tab:1}
+\end{table}
+
+Таблица 2 содержит варианты заданий по вариантам. Номерами методов обозначены: 1 -- Больцано, 2 -- трехточечного деления, 3 -- золотого сечения, 4 -- Фибоначчи, 5 -- Ньютона, 6 -- секущих, 7 -- Мюллера, 8 -- обратная параболическая интерполяция, 9 -- Брента-Деккера.
+
+\begin{table}
+  \centering
+    \begin{tabular}{| l | l | l |}
+    \hline
+     Вариант & Номера функций & Номера методов \\ \hline
+      1 & 2& 1,5\\ \hline
+	2 & 2 & 2,6\\ \hline
+	3 & 2 & 4,7\\ \hline
+	4 & 2 & 8,9\\ \hline
+	5 & 1& 1,5\\ \hline
+	6 & 1 & 2,6\\ \hline
+	7 & 1 & 4,7\\ \hline
+	8 & 1 & 8,9\\ \hline
+	9 & 1 & 1,3\\ \hline
+	10 & 2 & 1,3\\ \hline
+	11 & 2 & 4,9\\ \hline
+	12 & 2 & 5,8\\ \hline
+	13 & 1 & 5,7\\ \hline
+	14 & 1 & 6,7\\ \hline
+	15 & 1 & 2,8\\ \hline
+	16 & 1 & 3,9\\ \hline
+     \end{tabular}
+    \caption{Варианты}
+    \label{tab:2}
+\end{table}
+\end{document}
