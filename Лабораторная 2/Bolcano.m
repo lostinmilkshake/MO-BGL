@@ -15,7 +15,9 @@ function [xk, k] = Bolcano(dfunction,funct , a, b, tol)
     deltaY = abs(maxy - miny)/100;
     placelabel(a,0,deltaX,deltaY,ctr);
     placelabel(b,0,deltaX,deltaY,ctr);
+    k = 0;
     input("");
+    print('-djpg',[num2str(k), ' Bolcano itter'])
     %Main algorithm
     xk = (a + b) / 2;
     while (abs(dfunction(xk)) >= epsilon) & (abs(b - a) >= delta)
@@ -28,6 +30,7 @@ function [xk, k] = Bolcano(dfunction,funct , a, b, tol)
         xk = (a + b) / 2;
         drawplot(funct,a,b,xk,xk);
         placelabel(xk,funct(xk),deltaX,deltaY, k);
+        print('-djpg',[num2str(k), 'Bolcanoitter'])
         input("");
     end
     hold off
