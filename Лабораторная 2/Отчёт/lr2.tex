@@ -174,7 +174,9 @@ function [xk, k] = Bolcano(dfunction,funct , a, b, tol)
     deltaY = abs(maxy - miny)/100;
     placelabel(a,0,deltaX,deltaY,ctr);
     placelabel(b,0,deltaX,deltaY,ctr);
+    k = 0;
     input("");
+    print('-djpg',[num2str(k), ' Bolcano itter'])
     %Main algorithm
     xk = (a + b) / 2;
     while (abs(dfunction(xk)) >= epsilon) & (abs(b - a) >= delta)
@@ -187,6 +189,7 @@ function [xk, k] = Bolcano(dfunction,funct , a, b, tol)
         xk = (a + b) / 2;
         drawplot(funct,a,b,xk,xk);
         placelabel(xk,funct(xk),deltaX,deltaY, k);
+        print('-djpg',[num2str(k), ' Bolcano itter'])
         input("");
     end
     hold off
@@ -222,8 +225,29 @@ end
 
 \end{lstlisting}
 
-\subsection*{График, демонстрирующий мето Больцано}
-
+\subsection*{Графики, демонстрирующие работу метода Больцано}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{0Bolcanoitter.jpg}
+        \caption{инициализация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{1Bolcanoitter.jpg}
+        \caption{Первая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{2Bolcanoitter.jpg}
+        \caption{Вторая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{3Bolcanoitter.jpg}
+        \caption{Третья иттерация}
+    \end{figure}
+\newpage
+\subsection*{Код метода секущих}
 \begin{lstlisting}[style=Matlab-editor, caption=Метод секущих]
 
 function [xk, k] = secant(dfunction, funct, a, b, tol)
@@ -286,6 +310,58 @@ end
 
 \end{lstlisting}
 
-\subsection*{График, демонстрирующий метод секущих}
+\subsection*{Графики, демонстрирующие работу метода секущих}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{0secantitter.jpg}
+        \caption{инициализация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{1secantitter.jpg}
+        \caption{Первая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{2secantitter.jpg}
+        \caption{Вторая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{3secantitter.jpg}
+        \caption{Третья иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{4secantitter.jpg}
+        \caption{Четвёртая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{5secantitter.jpg}
+        \caption{Пятая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{6secantitter.jpg}
+        \caption{Шестая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{7secantitter.jpg}
+        \caption{Седьмая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{8secantitter.jpg}
+        \caption{Восьмая иттерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{9secantitter.jpg}
+        \caption{Девятая иттерация}
+    \end{figure}
+\newpage    
+
 %Здесь дожен быть график
 \end{document}

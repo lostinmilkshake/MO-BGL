@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.24)  3 OCT 2019 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.24)  4 OCT 2019 15:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**lr2.tex
-(./lr2.tex
+**lr2Titul.tex
+(./lr2Titul.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -612,12 +612,12 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 Package: chngcntr 2018/04/09 v1.1a change counter resetting
 Package chngcntr Info: \counterwithout already defined.
 (chngcntr)             Quitting chngcntr on input line 21.
-) (./lr2.aux
+) (./lr2Titul.aux
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 3.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
-\openout1 = `lr2.aux'.
+\openout1 = `lr2Titul.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
@@ -727,258 +727,20 @@ Package caption Info: End \AtBeginDocument code.
 
 [1
 
-{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Command \textendash invalid in math mode on input line 116.
-
-[2]
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 158.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
-File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-) [3]
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 205.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmtt.fd
-File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-
-./lr2.tex:226: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.226     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<0Bolcanoitter.jpg, id=24, 578.16pt x 433.62pt>
-File: 0Bolcanoitter.jpg Graphic file (type jpg)
-<use 0Bolcanoitter.jpg>
-Package pdftex.def Info: 0Bolcanoitter.jpg  used on input line 228.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:231: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.231     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<1Bolcanoitter.jpg, id=25, 578.16pt x 433.62pt>
-File: 1Bolcanoitter.jpg Graphic file (type jpg)
-<use 1Bolcanoitter.jpg>
-Package pdftex.def Info: 1Bolcanoitter.jpg  used on input line 233.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:236: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.236     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<2Bolcanoitter.jpg, id=26, 578.16pt x 433.62pt>
-File: 2Bolcanoitter.jpg Graphic file (type jpg)
-<use 2Bolcanoitter.jpg>
-Package pdftex.def Info: 2Bolcanoitter.jpg  used on input line 238.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:241: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.241     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<3Bolcanoitter.jpg, id=27, 578.16pt x 433.62pt>
-File: 3Bolcanoitter.jpg Graphic file (type jpg)
-<use 3Bolcanoitter.jpg>
-Package pdftex.def Info: 3Bolcanoitter.jpg  used on input line 243.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-[4] [5 <./0Bolcanoitter.jpg> <./1Bolcanoitter.jpg> <./2Bolcanoitter.jpg>] [6]
-
-./lr2.tex:311: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.311     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<0secantitter.jpg, id=38, 578.16pt x 433.62pt>
-File: 0secantitter.jpg Graphic file (type jpg)
-<use 0secantitter.jpg>
-Package pdftex.def Info: 0secantitter.jpg  used on input line 313.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:316: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.316     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<1secantitter.jpg, id=39, 578.16pt x 433.62pt>
-File: 1secantitter.jpg Graphic file (type jpg)
-<use 1secantitter.jpg>
-Package pdftex.def Info: 1secantitter.jpg  used on input line 318.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:321: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.321     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<2secantitter.jpg, id=40, 578.16pt x 433.62pt>
-File: 2secantitter.jpg Graphic file (type jpg)
-<use 2secantitter.jpg>
-Package pdftex.def Info: 2secantitter.jpg  used on input line 323.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:326: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.326     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<3secantitter.jpg, id=41, 578.16pt x 433.62pt>
-File: 3secantitter.jpg Graphic file (type jpg)
-<use 3secantitter.jpg>
-Package pdftex.def Info: 3secantitter.jpg  used on input line 328.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:331: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.331     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<4secantitter.jpg, id=42, 578.16pt x 433.62pt>
-File: 4secantitter.jpg Graphic file (type jpg)
-<use 4secantitter.jpg>
-Package pdftex.def Info: 4secantitter.jpg  used on input line 333.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:336: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.336     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<5secantitter.jpg, id=43, 578.16pt x 433.62pt>
-File: 5secantitter.jpg Graphic file (type jpg)
-<use 5secantitter.jpg>
-Package pdftex.def Info: 5secantitter.jpg  used on input line 338.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:341: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.341     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<6secantitter.jpg, id=44, 578.16pt x 433.62pt>
-File: 6secantitter.jpg Graphic file (type jpg)
-<use 6secantitter.jpg>
-Package pdftex.def Info: 6secantitter.jpg  used on input line 343.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:346: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.346     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<7secantitter.jpg, id=45, 578.16pt x 433.62pt>
-File: 7secantitter.jpg Graphic file (type jpg)
-<use 7secantitter.jpg>
-Package pdftex.def Info: 7secantitter.jpg  used on input line 348.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:351: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.351     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<8secantitter.jpg, id=46, 578.16pt x 433.62pt>
-File: 8secantitter.jpg Graphic file (type jpg)
-<use 8secantitter.jpg>
-Package pdftex.def Info: 8secantitter.jpg  used on input line 353.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-
-./lr2.tex:356: LaTeX Error: Unknown float option `H'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.356     \begin{figure}[H]
-                           
-Option `H' ignored and `p' used.
-
-<9secantitter.jpg, id=47, 578.16pt x 433.62pt>
-File: 9secantitter.jpg Graphic file (type jpg)
-<use 9secantitter.jpg>
-Package pdftex.def Info: 9secantitter.jpg  used on input line 358.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-[7] [8 <./3Bolcanoitter.jpg> <./0secantitter.jpg> <./1secantitter.jpg>] [9 <./2secantitter.jpg> <./3secantitter.jpg> <./4secantitter.jpg>] [10 <./5secantitter.jpg> <./6secantitter.jpg> <./7secantitter.jpg>] [11 <./8secantitter.jpg> <./9secantitter.jpg>] (./lr2.aux) ) 
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lr2Titul.aux) ) 
 Here is how much of TeX's memory you used:
- 8568 strings out of 492616
- 123081 string characters out of 6129481
- 354956 words of memory out of 5000000
- 12342 multiletter control sequences out of 15000+600000
- 12003 words of font info for 34 fonts, out of 8000000 for 9000
+ 8056 strings out of 492616
+ 116790 string characters out of 6129481
+ 200940 words of memory out of 5000000
+ 11854 multiletter control sequences out of 15000+600000
+ 11059 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,7n,56p,378b,1840s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on lr2.pdf (11 pages, 892413 bytes).
+ 44i,7n,42p,275b,217s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
+Output written on lr2Titul.pdf (1 page, 30307 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 17 PDF objects out of 1000 (max. 8388607)
+ 11 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

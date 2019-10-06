@@ -1,22 +1,14 @@
 function [xk, k] = Bolcano(dfunction,funct , a, b, tol) 
-    
-    % VISUALIZATION
-
-    
     format long g
     t = a:0.1:b; k = 1;
     epsilon = tol; delta = tol;
-
     %Visualization
     ctr = 1;
     deltaX = (b-a)/100;
     figure(3); hold on
-    [miny, maxy] = drawplot(funct,a,b,a,b);
+    [miny, maxy] = drawplot(dfunction,funct,a,b,a,k);
     deltaY = abs(maxy - miny)/100;
-    placelabel(a,0,deltaX,deltaY,ctr);
-    placelabel(b,0,deltaX,deltaY,ctr);
     k = 0;
-    input("");
     print('-djpg',[num2str(k), ' Bolcano itter'])
     %Main algorithm
     xk = (a + b) / 2;
@@ -28,38 +20,49 @@ function [xk, k] = Bolcano(dfunction,funct , a, b, tol)
         end
         k = k + 1;
         xk = (a + b) / 2;
-        drawplot(funct,a,b,xk,xk);
-        placelabel(xk,funct(xk),deltaX,deltaY, k);
+        drawplot(dfunction,funct,a,b,xk,k);
         print('-djpg',[num2str(k), 'Bolcanoitter'])
-        input("");
     end
     hold off
 end
 
-function [miny maxy] = drawplot(f,a,b,x1,x2)
+function [miny maxy] = drawplot(df, f, a, b, x1, iternumber)
+    
     figure(3); 
     h = (b-a)/100;
+    %Drawing plot of dfunction
+    dx = a:h:b;
+    dy = feval(df,dx);
+    miny = min(dy);
+    maxy = max(dy);
+    deltaX = (b-a) / 100;
+    deltaY = abs(maxy - miny)/100;
+    subplot(2,1,1);
+    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    plot(dx,dy,'LineWidth',1,'Color',colp);
+    xlim([2.8 3.4])
+    ylim([-0.2 0.25])
+    xlabel('x')
+    ylabel('df(x)')
+    hold on
+    line([a b],[0 0],'Color','k','LineWidth',1); %axis x
+    y1 = feval(df, x1);
+    ya = feval(df, a);
+    yb = feval(df, b);
+    line([x1 x1],[0 feval(df, x1)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+    scatter(x1,feval(df, x1),'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
+    text(x1 - deltaX/2, feval(df, x1) + deltaY, num2str(iternumber));
+    %Drawing plot of the function
     x = a:h:b;
     y = feval(f,x);
-    
-    miny = min(y);
-    maxy = max(y);
-    
-    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
-    plot(x,y,'LineWidth',1,'Color',colp);
-    scatter([a b],[feval(f,a), feval(f,b)],'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
-    xlabel('\itx');
-    ylabel('\ity');
-    line([a b],[0 0],'Color','k','LineWidth',1); %axis x
-    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
-    y1 = feval(f, x1);
-    line([x1 x1],[0 y1],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
-    %y2 = feval(f,x2);
-    %line([x2 x2],[0 y2],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
-end
-
-function placelabel(x,y,deltaX,deltaY,iternumber)
-    if iternumber <=10
-        text(x - deltaX/2, y + 4*deltaY, num2str(iternumber));
-    end
+    subplot(2,1,2);
+    plot(x, y, 'LineWidth', 1, 'Color', colp);
+    xlim([2.8 3.4])
+    ylim([-50.1 -49.9])
+    xlabel('x')
+    ylabel('f(x)')
+    hold on
+    scatter(x1, feval(f,x1), 'Marker', 'o', 'MarkerFaceColor', colp, 'MarkerEdgeColor', colp);
+    input("");
 end
