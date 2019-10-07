@@ -12,6 +12,7 @@
 \usepackage{filecontents}
 \usepackage[T1]{fontenc}
 \usepackage{listings,chngcntr}
+\usepackage{float}
 
 \begin{document}
 %\counterwithin{lstlisting}{}
@@ -234,19 +235,20 @@ end
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.4]{1Bolcanoitter.jpg}
-        \caption{Первая иттерация}
+        \caption{Первая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.4]{2Bolcanoitter.jpg}
-        \caption{Вторая иттерация}
+        \caption{Вторая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.4]{3Bolcanoitter.jpg}
-        \caption{Третья иттерация}
-    \end{figure}
+        \caption{Третья итерация}
+    \end{figure} 
 \newpage
+\\
 \subsection*{Код метода секущих}
 \begin{lstlisting}[style=Matlab-editor, caption=Метод секущих]
 
@@ -351,17 +353,8 @@ end
         \includegraphics[scale=0.4]{7secantitter.jpg}
         \caption{Седьмая иттерация}
     \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.4]{8secantitter.jpg}
-        \caption{Восьмая иттерация}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.4]{9secantitter.jpg}
-        \caption{Девятая иттерация}
-    \end{figure}
-\newpage    
+\newpage
+\subsection*{Вывод}
 
 %Здесь дожен быть график
 \end{document}

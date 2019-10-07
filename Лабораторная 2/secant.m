@@ -54,9 +54,15 @@ function [miny maxy] = drawplot(df, f, a, b, x1, iternumber)
     y1 = feval(df, x1);
     ya = feval(df, a);
     yb = feval(df, b);
-    line([a b],[ya yb],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
-    line([b b],[0 feval(df, b)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
-    text(b - deltaX/2, feval(df, b) + 4*deltaY, num2str(iternumber));
+    if x1 == a
+        line([a b],[ya yb],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+        line([a a],[0 feval(df, a)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+        text(a - deltaX/2, feval(df, a) + 4*deltaY, num2str(iternumber));
+    else
+        line([a b],[ya yb],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+        line([b b],[0 feval(df, b)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+        text(b - deltaX/2, feval(df, b) + 4*deltaY, num2str(iternumber));
+    end
     %Drawing plot of the function
     x = a:h:b;
     y = feval(f,x);

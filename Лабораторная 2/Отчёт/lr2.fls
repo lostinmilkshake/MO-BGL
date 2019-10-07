@@ -1,4 +1,4 @@
-PWD /Users/irinalitvinova/Google Диск/Бригада /MO-BGL/Лабораторная 2/Отчёт
+PWD /Users/irinalitvinova/Google Диск/Бригада/MO-BGL/Лабораторная 2/Отчёт
 INPUT /usr/local/texlive/2019/texmf.cnf
 INPUT /usr/local/texlive/2019/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -93,6 +93,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/t1enc.def
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/chngcntr/chngcntr.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/chngcntr/chngcntr.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/float/float.sty
 INPUT lr2.aux
 INPUT lr2.aux
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/cyrillic/t2acmr.fd
@@ -184,12 +186,6 @@ INPUT ./6secantitter.jpg
 INPUT 7secantitter.jpg
 INPUT ./7secantitter.jpg
 INPUT ./7secantitter.jpg
-INPUT 8secantitter.jpg
-INPUT ./8secantitter.jpg
-INPUT ./8secantitter.jpg
-INPUT 9secantitter.jpg
-INPUT ./9secantitter.jpg
-INPUT ./9secantitter.jpg
 INPUT lr2.aux
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc
