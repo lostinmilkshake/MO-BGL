@@ -32,7 +32,7 @@
 \vspace{7cm}
 
 \begin{centering}
-\textbf{ {\large 
+\textbf{{\large 
 ЗАДАНИЕ\\
 по лабораторной работе №2\\
 по дисциплине «Методы оптимизации»\\
@@ -44,10 +44,10 @@
 \vspace{4cm}
 
 \begin{tabular}{l r}
-    \textbf{ {\large Студенты:}}&\hspace{6cm} \textbf{ {\large Литвинов К.Л.}}\\
-   \textbf{}&\hspace{6cm} \textbf{ {\large Гарцев Е.А.}}\\
+    \textbf{{\large Студенты:}}&\hspace{6cm} \textbf{{\large Литвинов К.Л.}}\\
+   \textbf{}&\hspace{6cm} \textbf{{\large Гарцев Е.А.}}\\
    \textbf{{}}&\hspace{6cm} \textbf{\large{Бурков М.П.}}\\
-    \textbf{ {\large Преподаватель:}}&\hspace{6cm} \textbf{ {\large Каримов А.И.}}\\
+    \textbf{{\large Преподаватель:}}&\hspace{6cm} \textbf{{\large Каримов А.И.}}\\
 \end{tabular}
 
 \vspace{6cm}
@@ -64,10 +64,12 @@
  
 \subsection*{Цель работы}
 
-Изучение среды MATLAB, создание программы для реализации одного из методов одномерного поиска на основе поиска стационарной точки: 
+Изучение среды MATLAB, создание программы для реализации двух 
+методов одномерного поиска на основе поиска стационарной точки: 
 
 \begin{itemize}
 	\item Метод секущих;
+    \item Метод Трёхточечного деления;
 \end{itemize}
 
 
@@ -156,205 +158,242 @@ $k = k + 1$;
 \textbf{Пока не выполнен КОП}
 
 \subsection*{Код программы}
-\begin{lstlisting}[style=Matlab-editor, caption=Метод Больцано]
-
-function [xk, k] = Bolcano(dfunction,funct , a, b, tol) 
-    
-    % VISUALIZATION
-
-    
+\begin{lstlisting}[style=Matlab-editor, caption=Метод Трёхточечного деления]
+function [xm, k] = ThreeDots(dfunction,funct , a, b, tol) 
     format long g
     t = a:0.1:b; k = 1;
     epsilon = tol; delta = tol;
-
     %Visualization
-    ctr = 1;
     deltaX = (b-a)/100;
     figure(3); hold on
-    [miny, maxy] = drawplot(funct,a,b,a,b);
+    [miny, maxy] = drawplot(dfunction,funct,a,b,a,b,k); %drawing plot of the function and derivative
     deltaY = abs(maxy - miny)/100;
-    placelabel(a,0,deltaX,deltaY,ctr);
-    placelabel(b,0,deltaX,deltaY,ctr);
     k = 0;
-    input("");
-    print('-djpg',[num2str(k), ' Bolcano itter'])
+    print('-dpdf',[num2str(k), 'ThreeDotsIter'])
     %Main algorithm
     xk = (a + b) / 2;
-    while (abs(dfunction(xk)) >= epsilon) & (abs(b - a) >= delta)
-        if (dfunction(xk)) > 0
-            b = xk;
+    %Three dots method
+    xm = (a+b)./2;
+    Lk = abs(b-a);
+    x1 = (a+Lk/4);
+    x2 = (b-Lk/4);
+    while Lk>epsilon & k < 5
+        if funct(x1)<funct(xm)
+            b = xm;
+            xm = x1;
+        elseif (funct(x1)>=funct(xm)) & (funct(xm)<=funct(x2))
+            a = x1;
+            b = x2;
         else
-            a = xk;
+            a = xm;
+            xm = x2;
         end
         k = k + 1;
-        xk = (a + b) / 2;
-        drawplot(funct,a,b,xk,xk);
-        placelabel(xk,funct(xk),deltaX,deltaY, k);
-        print('-djpg',[num2str(k), ' Bolcano itter'])
-        input("");
-    end
+        xm = (a+b)./2;
+        Lk = abs(b-a);
+        x1 = (a+Lk/4);
+        x2 = (b-Lk/4);
+        drawplot(dfunction,funct,a,b,x1, x2 ,k);
+        print('-dpdf',[num2str(k), 'ThreeDotsIter'])
+    end 
+    x1, x2
+
     hold off
 end
 
-function [miny maxy] = drawplot(f,a,b,x1,x2)
+function [miny maxy] = drawplot(df, f, a, b, x1, x2, iternumber)
+    
     figure(3); 
     h = (b-a)/100;
+    %Drawing plot of dfunction
+    dx = a:h:b;
+    dy = feval(f,dx);
+    miny = min(dy);
+    maxy = max(dy);
+    deltaX = (b-a) / 100;
+    deltaY = abs(maxy - miny)/100;
+    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    %Drawing plot of the function
     x = a:h:b;
     y = feval(f,x);
-    
-    miny = min(y);
-    maxy = max(y);
-    
-    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
-    plot(x,y,'LineWidth',1,'Color',colp);
-    scatter([a b],[feval(f,a), feval(f,b)],'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
-    xlabel('\itx');
-    ylabel('\ity');
-    line([a b],[0 0],'Color','k','LineWidth',1); %axis x
-    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
-    y1 = feval(f, x1);
-    line([x1 x1],[0 y1],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
-    %y2 = feval(f,x2);
-    %line([x2 x2],[0 y2],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
+    plot(x, y, 'LineWidth', 1, 'Color', colp);
+    %xlim([2.8 3.4])
+    line([a b],[-50 -50],'Color','k','LineWidth',1); %axis x
+    ylim([-55 -30])
+    xlabel('\itx')
+    ylabel('\it{}f\rm (\it{}x\rm)')
+    hold on
+    line([x1 x1],[-50 feval(f, x1)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
+    scatter(x1,feval(f, x1),'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
+    line([x2 x2],[-50 feval(f, x2)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
+    scatter(x2,feval(f, x2),'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
+    textColor = 'black';
+    textBackground = 'white';
+    text(x1 - deltaX/2, feval(f, x1) + 4*deltaY + 1, num2str(iternumber),'Color', textColor,'BackgroundColor', textBackground);
+    text(x2 - deltaX/2, feval(f, x2) + 4*deltaY + 1, num2str(iternumber));
+    input("");
 end
-
-function placelabel(x,y,deltaX,deltaY,iternumber)
-    if iternumber <=10
-        text(x - deltaX/2, y + 4*deltaY, num2str(iternumber));
-    end
-end
-
 \end{lstlisting}
 
-\subsection*{Графики, демонстрирующие работу метода Больцано}
+\subsection*{Графики, демонстрирующие работу метода трёхточеченого деления}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{0Bolcanoitter.jpg}
+        \includegraphics[scale=0.4]{0Bolcanoitter.pdf}
         \caption{инициализация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{1Bolcanoitter.jpg}
+        \includegraphics[scale=0.4]{1Bolcanoitter.pdf}
         \caption{Первая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{2Bolcanoitter.jpg}
+        \includegraphics[scale=0.4]{2Bolcanoitter.pdf}
         \caption{Вторая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{3Bolcanoitter.jpg}
+        \includegraphics[scale=0.4]{3Bolcanoitter.pdf}
         \caption{Третья итерация}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{4Bolcanoitter.pdf}
+        \caption{Четвёртая итерация}
     \end{figure} 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.4]{5Bolcanoitter.pdf}
+        \caption{Пятая итерация}
+    \end{figure}     
 \newpage
 \\
 \subsection*{Код метода секущих}
 \begin{lstlisting}[style=Matlab-editor, caption=Метод секущих]
-
 function [xk, k] = secant(dfunction, funct, a, b, tol)
     epsilon = tol;
-    
     %Visualization
-    ctr = 1;
-    deltaX = (b-a) / 100;
-    figure(3); hold on
-    [miny, maxy] = drawplot(funct,a,b,a,b);
+    deltaX = a:(b-a) / 100:b;
+    figure(3); 
+    k = 0;
+    [miny, maxy] = drawplot(dfunction,funct,a,b,a, k); %drawing plot of the function and derivative
     deltaY = abs(maxy - miny)/100;
-    placelabel(a,0,deltaX,deltaY,ctr);
-    placelabel(b,0,deltaX,deltaY,ctr);
-    
-    %Main algorithm
+    print('-dpdf',[num2str(k), 'secantitter'])
+    %Secant method
     while 1
-        xk = b - dfunction(b)*(b - a) / (dfunction(b) - dfunction(a))
-        if dfunction(xk) <= epsilon
+        xk = b - dfunction(b)*(b - a) / (dfunction(b) - dfunction(a));
+        if abs(dfunction(xk)) <= epsilon | k > 6
             break
         else
+            dfunction(xk), xk
             if dfunction(xk) > 0
-                b = xk
+                b = xk;
             else
-                a = xk
+                a = xk;
             end
         end
-        drawplot(funct,a,b,xk,xk);
-        k = k + 1
+        subplot(2,1,1);
+        k = k + 1;
+        drawplot(dfunction, funct, a, b, xk, k);
+        print('-dpdf',[num2str(k), 'secantitter'])
     end
+hold off
 end
 
-function [miny maxy] = drawplot(f,a,b,x1,x2)
+function [miny maxy] = drawplot(df, f, a, b, x1, iternumber)
+    
     figure(3); 
     h = (b-a)/100;
+    %Drawing plot od dfunction
+    dx = a:h:b;
+    dy = feval(df,dx);
+    miny = min(dy);
+    maxy = max(dy);
+    deltaX = (b-a) / 100;
+    deltaY = abs(maxy - miny)/100;
+    subplot(2,1,1);
+    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
+    plot(dx,dy,'LineWidth',1,'Color',colp);
+    xlim([2.5 4])
+    ylim([-10 20])
+    xlabel('\itx')
+    ylabel('\it{}df\rm (\it{}x\rm)')
+    hold on
+    scatter([a b],[feval(df,a), feval(df,b)],'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
+    line([a b],[0 0],'Color','k','LineWidth',1); %axis x
+    y1 = feval(df, x1);
+    ya = feval(df, a);
+    yb = feval(df, b);
+    %Deciding where to draw secant 
+    if x1 == a
+        line([a b],[ya yb],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); %drawing secant
+        line([a a],[0 feval(df, a)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+        text(a - deltaX/2, feval(df, a) + 4*deltaY, num2str(iternumber));
+    else
+        line([a b],[ya yb],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); %drawing secant
+        line([b b],[0 feval(df, b)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+        text(b - deltaX/2, feval(df, b) + 4*deltaY, num2str(iternumber));
+    end
+    %Drawing plot of the function
     x = a:h:b;
     y = feval(f,x);
-    
-    miny = min(y);
-    maxy = max(y);
-    
-    colp = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
-    plot(x,y,'LineWidth',1,'Color',colp);
-    scatter([a b],[feval(f,a), feval(f,b)],'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
-    xlabel('\itx');
-    ylabel('\ity');
-    line([a b],[0 0],'Color','k','LineWidth',1); %axis x
-    col = hsv2rgb([rand(), 1, 0.5+0.5*rand()]);
-    y1 = feval(f, x1);
-    line([x1 x1],[0 y1],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
-    y2 = feval(f,x2);
-    line([x2 x2],[0 y2],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
+    subplot(2,1,2);
+    plot(x, y, 'LineWidth', 1, 'Color', colp);
+    xlim([2.5 4])
+    ylim([-60 -45])
+    xlabel('\itx')
+    ylabel('\it{}f\rm (\it{}x\rm)')
+    hold on
+    scatter(b, feval(f,b), 'Marker', 'o', 'MarkerFaceColor', colp, 'MarkerEdgeColor', colp);
     input("");
 end
-
-function placelabel(x,y,deltaX,deltaY,iternumber)
-    if iternumber <=10
-        text(x - deltaX/2, y + 4*deltaY, num2str(iternumber));
-    end
-end
-
 \end{lstlisting}
 
 \subsection*{Графики, демонстрирующие работу метода секущих}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{0secantitter.jpg}
+        \includegraphics[scale=0.4]{0secantitter.pdf}
         \caption{инициализация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{1secantitter.jpg}
-        \caption{Первая иттерация}
+        \includegraphics[scale=0.4]{1secantitter.pdf}
+        \caption{Первая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{2secantitter.jpg}
-        \caption{Вторая иттерация}
+        \includegraphics[scale=0.4]{2secantitter.pdf}
+        \caption{Вторая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{3secantitter.jpg}
-        \caption{Третья иттерация}
+        \includegraphics[scale=0.4]{3secantitter.pdf}
+        \caption{Третья итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{4secantitter.jpg}
-        \caption{Четвёртая иттерация}
+        \includegraphics[scale=0.4]{4secantitter.pdf}
+        \caption{Четвёртая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{5secantitter.jpg}
-        \caption{Пятая иттерация}
+        \includegraphics[scale=0.4]{5secantitter.pdf}
+        \caption{Пятая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{6secantitter.jpg}
-        \caption{Шестая иттерация}
+        \includegraphics[scale=0.4]{6secantitter.pdf}
+        \caption{Шестая итерация}
     \end{figure}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.4]{7secantitter.jpg}
-        \caption{Седьмая иттерация}
+        \includegraphics[scale=0.4]{7secantitter.pdf}
+        \caption{Седьмая итерация}
     \end{figure}
 \newpage
 \subsection*{Вывод}
-
-%Здесь дожен быть график
+В результате выполнения лабораторной работы было выяснено, что 
+метод Трёхточечного деления для нашей функции работает лучше, чем метод секущих.
 \end{document}

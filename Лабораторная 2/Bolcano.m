@@ -3,16 +3,16 @@ function [xk, k] = Bolcano(dfunction,funct , a, b, tol)
     t = a:0.1:b; k = 1;
     epsilon = tol; delta = tol;
     %Visualization
-    ctr = 1;
     deltaX = (b-a)/100;
     figure(3); hold on
-    [miny, maxy] = drawplot(dfunction,funct,a,b,a,k);
+    [miny, maxy] = drawplot(dfunction,funct,a,b,a,k); %drawing plot of the function and derivative
     deltaY = abs(maxy - miny)/100;
     k = 0;
     print('-djpg',[num2str(k), ' Bolcano itter'])
     %Main algorithm
     xk = (a + b) / 2;
-    while (abs(dfunction(xk)) >= epsilon) & (abs(b - a) >= delta)
+    %Bolcano method
+    while (abs(dfunction(xk)) >= epsilon) & (abs(b - a) >= delta) 
         if (dfunction(xk)) > 0
             b = xk;
         else
@@ -50,7 +50,7 @@ function [miny maxy] = drawplot(df, f, a, b, x1, iternumber)
     y1 = feval(df, x1);
     ya = feval(df, a);
     yb = feval(df, b);
-    line([x1 x1],[0 feval(df, x1)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4);
+    line([x1 x1],[0 feval(df, x1)],'Marker','s','Color',col,'LineWidth',1,'MarkerSize',4); 
     scatter(x1,feval(df, x1),'Marker','o','MarkerFaceColor',colp,'MarkerEdgeColor',colp);
     text(x1 - deltaX/2, feval(df, x1) + deltaY, num2str(iternumber));
     %Drawing plot of the function

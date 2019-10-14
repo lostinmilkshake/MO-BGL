@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.24)  7 OCT 2019 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.24)  11 OCT 2019 15:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -737,109 +737,156 @@ Package caption Info: End \AtBeginDocument code.
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Command \textendash invalid in math mode on input line 117.
+LaTeX Warning: Command \textendash invalid in math mode on input line 119.
 
 [2]
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 159.
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 161.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 180.
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 172.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [3]
-<0Bolcanoitter.jpg, id=25, 578.16pt x 433.62pt>
-File: 0Bolcanoitter.jpg Graphic file (type jpg)
-<use 0Bolcanoitter.jpg>
-Package pdftex.def Info: 0Bolcanoitter.jpg  used on input line 232.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<1Bolcanoitter.jpg, id=26, 578.16pt x 433.62pt>
-File: 1Bolcanoitter.jpg Graphic file (type jpg)
-<use 1Bolcanoitter.jpg>
-Package pdftex.def Info: 1Bolcanoitter.jpg  used on input line 237.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<2Bolcanoitter.jpg, id=27, 578.16pt x 433.62pt>
-File: 2Bolcanoitter.jpg Graphic file (type jpg)
-<use 2Bolcanoitter.jpg>
-Package pdftex.def Info: 2Bolcanoitter.jpg  used on input line 242.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
- [4 <./0Bolcanoitter.jpg>]
-<3Bolcanoitter.jpg, id=31, 578.16pt x 433.62pt>
-File: 3Bolcanoitter.jpg Graphic file (type jpg)
-<use 3Bolcanoitter.jpg>
-Package pdftex.def Info: 3Bolcanoitter.jpg  used on input line 247.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
- [5 <./1Bolcanoitter.jpg> <./2Bolcanoitter.jpg> <./3Bolcanoitter.jpg>]
 
-./lr2.tex:252: LaTeX Error: There's no line here to end.
+pdfTeX warning: pdflatex (file ./0Bolcanoitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<0Bolcanoitter.pdf, id=25, 614.295pt x 794.97pt>
+File: 0Bolcanoitter.pdf Graphic file (type pdf)
+<use 0Bolcanoitter.pdf>
+Package pdftex.def Info: 0Bolcanoitter.pdf  used on input line 242.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./1Bolcanoitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<1Bolcanoitter.pdf, id=26, 614.295pt x 794.97pt>
+File: 1Bolcanoitter.pdf Graphic file (type pdf)
+<use 1Bolcanoitter.pdf>
+Package pdftex.def Info: 1Bolcanoitter.pdf  used on input line 247.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[4]
+
+pdfTeX warning: pdflatex (file ./2Bolcanoitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<2Bolcanoitter.pdf, id=30, 614.295pt x 794.97pt>
+File: 2Bolcanoitter.pdf Graphic file (type pdf)
+<use 2Bolcanoitter.pdf>
+Package pdftex.def Info: 2Bolcanoitter.pdf  used on input line 252.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./3Bolcanoitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<3Bolcanoitter.pdf, id=31, 614.295pt x 794.97pt>
+File: 3Bolcanoitter.pdf Graphic file (type pdf)
+<use 3Bolcanoitter.pdf>
+Package pdftex.def Info: 3Bolcanoitter.pdf  used on input line 257.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[5 <./0Bolcanoitter.pdf> <./1Bolcanoitter.pdf>]
+
+pdfTeX warning: pdflatex (file ./4Bolcanoitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<4Bolcanoitter.pdf, id=43, 614.295pt x 794.97pt>
+File: 4Bolcanoitter.pdf Graphic file (type pdf)
+<use 4Bolcanoitter.pdf>
+Package pdftex.def Info: 4Bolcanoitter.pdf  used on input line 262.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./5Bolcanoitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<5Bolcanoitter.pdf, id=44, 614.295pt x 794.97pt>
+File: 5Bolcanoitter.pdf Graphic file (type pdf)
+<use 5Bolcanoitter.pdf>
+Package pdftex.def Info: 5Bolcanoitter.pdf  used on input line 267.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[6 <./2Bolcanoitter.pdf> <./3Bolcanoitter.pdf>] [7 <./4Bolcanoitter.pdf> <./5Bolcanoitter.pdf>]
+
+./lr2.tex:272: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.252 \subsection
+l.272 \subsection
                  *{Код метода секущих}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[6]
-<0secantitter.jpg, id=38, 578.16pt x 433.62pt>
-File: 0secantitter.jpg Graphic file (type jpg)
-<use 0secantitter.jpg>
-Package pdftex.def Info: 0secantitter.jpg  used on input line 318.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<1secantitter.jpg, id=39, 578.16pt x 433.62pt>
-File: 1secantitter.jpg Graphic file (type jpg)
-<use 1secantitter.jpg>
-Package pdftex.def Info: 1secantitter.jpg  used on input line 323.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<2secantitter.jpg, id=40, 578.16pt x 433.62pt>
-File: 2secantitter.jpg Graphic file (type jpg)
-<use 2secantitter.jpg>
-Package pdftex.def Info: 2secantitter.jpg  used on input line 328.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<3secantitter.jpg, id=41, 578.16pt x 433.62pt>
-File: 3secantitter.jpg Graphic file (type jpg)
-<use 3secantitter.jpg>
-Package pdftex.def Info: 3secantitter.jpg  used on input line 333.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
- [7 <./0secantitter.jpg> <./1secantitter.jpg>]
-<4secantitter.jpg, id=46, 578.16pt x 433.62pt>
-File: 4secantitter.jpg Graphic file (type jpg)
-<use 4secantitter.jpg>
-Package pdftex.def Info: 4secantitter.jpg  used on input line 338.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<5secantitter.jpg, id=47, 578.16pt x 433.62pt>
-File: 5secantitter.jpg Graphic file (type jpg)
-<use 5secantitter.jpg>
-Package pdftex.def Info: 5secantitter.jpg  used on input line 343.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
-<6secantitter.jpg, id=48, 578.16pt x 433.62pt>
-File: 6secantitter.jpg Graphic file (type jpg)
-<use 6secantitter.jpg>
-Package pdftex.def Info: 6secantitter.jpg  used on input line 348.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
- [8 <./2secantitter.jpg> <./3secantitter.jpg> <./4secantitter.jpg>]
-<7secantitter.jpg, id=52, 578.16pt x 433.62pt>
-File: 7secantitter.jpg Graphic file (type jpg)
-<use 7secantitter.jpg>
-Package pdftex.def Info: 7secantitter.jpg  used on input line 353.
-(pdftex.def)             Requested size: 231.2599pt x 173.44492pt.
- [9 <./5secantitter.jpg> <./6secantitter.jpg> <./7secantitter.jpg>] [10] (./lr2.aux) ) 
+[8]
+
+pdfTeX warning: pdflatex (file ./0secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<0secantitter.pdf, id=71, 614.295pt x 794.97pt>
+File: 0secantitter.pdf Graphic file (type pdf)
+<use 0secantitter.pdf>
+Package pdftex.def Info: 0secantitter.pdf  used on input line 357.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./1secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<1secantitter.pdf, id=72, 614.295pt x 794.97pt>
+File: 1secantitter.pdf Graphic file (type pdf)
+<use 1secantitter.pdf>
+Package pdftex.def Info: 1secantitter.pdf  used on input line 362.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[9]
+
+pdfTeX warning: pdflatex (file ./2secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<2secantitter.pdf, id=76, 614.295pt x 794.97pt>
+File: 2secantitter.pdf Graphic file (type pdf)
+<use 2secantitter.pdf>
+Package pdftex.def Info: 2secantitter.pdf  used on input line 367.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./3secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<3secantitter.pdf, id=77, 614.295pt x 794.97pt>
+File: 3secantitter.pdf Graphic file (type pdf)
+<use 3secantitter.pdf>
+Package pdftex.def Info: 3secantitter.pdf  used on input line 372.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[10 <./0secantitter.pdf> <./1secantitter.pdf>]
+
+pdfTeX warning: pdflatex (file ./4secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<4secantitter.pdf, id=89, 614.295pt x 794.97pt>
+File: 4secantitter.pdf Graphic file (type pdf)
+<use 4secantitter.pdf>
+Package pdftex.def Info: 4secantitter.pdf  used on input line 377.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./5secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<5secantitter.pdf, id=90, 614.295pt x 794.97pt>
+File: 5secantitter.pdf Graphic file (type pdf)
+<use 5secantitter.pdf>
+Package pdftex.def Info: 5secantitter.pdf  used on input line 382.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[11 <./2secantitter.pdf> <./3secantitter.pdf>]
+
+pdfTeX warning: pdflatex (file ./6secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<6secantitter.pdf, id=102, 614.295pt x 794.97pt>
+File: 6secantitter.pdf Graphic file (type pdf)
+<use 6secantitter.pdf>
+Package pdftex.def Info: 6secantitter.pdf  used on input line 387.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+
+
+pdfTeX warning: pdflatex (file ./7secantitter.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<7secantitter.pdf, id=103, 614.295pt x 794.97pt>
+File: 7secantitter.pdf Graphic file (type pdf)
+<use 7secantitter.pdf>
+Package pdftex.def Info: 7secantitter.pdf  used on input line 392.
+(pdftex.def)             Requested size: 245.71364pt x 317.98236pt.
+[12 <./4secantitter.pdf> <./5secantitter.pdf>] [13 <./6secantitter.pdf> <./7secantitter.pdf>] [14] (./lr2.aux) ) 
 Here is how much of TeX's memory you used:
- 8606 strings out of 492616
- 123530 string characters out of 6129481
- 356333 words of memory out of 5000000
- 12378 multiletter control sequences out of 15000+600000
+ 8624 strings out of 492616
+ 124154 string characters out of 6129481
+ 380333 words of memory out of 5000000
+ 12395 multiletter control sequences out of 15000+600000
  12003 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,7n,56p,378b,1840s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,7n,56p,451b,1840s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on lr2.pdf (10 pages, 832761 bytes).
+Output written on lr2.pdf (14 pages, 239102 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 171 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
